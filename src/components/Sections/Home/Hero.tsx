@@ -1,4 +1,6 @@
-import { H2 } from "@components/atoms";
+import { H1, H2, Link } from "@components/atoms";
+import classNames from "classnames";
+import Image from "next/image";
 
 export default function Hero() {
     return (
@@ -23,9 +25,10 @@ export default function Hero() {
 
                 {/* Title */}
                 <div className="mt-16 nav:mt-20 z-10 flex flex-col items-center justify-center w-full h-full">
-                    <h1 className="mt-12 lg:!mt-20 mx-6 w-[300px] md:!w-full font-extrabold text-5xl lg:text-6xl leading-tight text-center mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-[#AAAAAA]">
-                        Make Ship Happen
-                    </h1>
+                    <H1 className="mt-12 lg:!mt-20 mx-6 w-[300px] md:!w-full font-extrabold text-5xl lg:text-6xl text-center mb-4">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-[#AAAAAA]">Begin your</span>
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 via-indigo-500 to-fuchsia-500">&nbsp;journey</span>
+                    </H1>
 
                     <p className="mx-6 text-xl max-h-[112px] md:max-h-[96px] w-[315px] md:w-[660px] md:text-2xl font-space-grotesk text-center text-[#888888]">
                         Turbo is an incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust.
@@ -35,13 +38,16 @@ export default function Hero() {
                 {/* Main Content */}
                 <div className="flex w-full container items-center justify-center gap-6 px-6 sm:mx-0 mt-8 md:!mt-14 lg:!mt-15 md:mb-4 flex-col lg:!flex-row z-10 lg:!translate-y-0">
                     <AnimatedBoxDingens
+                        href="/repo"
                         title="Turborepo"
                         description="High-performance build system for JavaScript and TypeScript codebases."
                         logo="" />
                     <AnimatedBoxDingens
+                        href="/pack"
                         title="Turbopack"
                         description="Introducing the Rust-powered successor to Webpack."
-                        logo="" />
+                        logo=""
+                        color="fuchsia" />
                 </div>
 
                 {/* Subtitle */}
@@ -55,38 +61,44 @@ export default function Hero() {
 
                         <div className="z-50 grid grid-flow-col grid-rows-6 sm:grid-rows-3 md:grid-rows-2 lg:grid-rows-1">
                             <TrustedByLogo
-                                src="https://turbo.build/images/logos/white/vercel.svg"
+                                href="https://vercel.com"
+                                src="/images/logos/vercel.svg"
                                 alt="Vercel's Logo"
                                 height={75}
                                 width={150} />
 
                             <TrustedByLogo
-                                src="https://turbo.build/images/logos/white/aws.svg"
-                                alt="Vercel's Logo"
+                                href="https://aws.com"
+                                src="/images/logos/aws.svg"
+                                alt="AWS's Logo"
                                 height={75}
                                 width={75} />
 
                             <TrustedByLogo
-                                src="https://turbo.build/images/logos/white/microsoft.svg"
-                                alt="Vercel's Logo"
+                                href="https://microsoft.com"
+                                src="/images/logos/microsoft.svg"
+                                alt="Microsoft's Logo"
                                 height={75}
                                 width={125} />
 
                             <TrustedByLogo
-                                src="https://turbo.build/images/logos/white/netflix.svg"
-                                alt="Vercel's Logo"
+                                href="https://netflix.com"
+                                src="/images/logos/netflix.svg"
+                                alt="Netflix's Logo"
                                 height={75}
                                 width={110} />
 
                             <TrustedByLogo
-                                src="https://turbo.build/images/logos/white/disney.svg"
-                                alt="Vercel's Logo"
+                                href="https://disney.com"
+                                src="/images/logos/disney.svg"
+                                alt="Disney's Logo"
                                 height={75}
                                 width={100} />
 
                             <TrustedByLogo
-                                src="https://turbo.build/images/logos/white/adobe.svg"
-                                alt="Vercel's Logo"
+                                href="https://adobe.com"
+                                src="/images/logos/adobe.svg"
+                                alt="Adobe's Logo"
                                 height={75}
                                 width={100} />
                         </div>
@@ -98,23 +110,30 @@ export default function Hero() {
 }
 
 interface AnimatedBoxDingensProps {
+    href: string;
     title: string;
     description: string;
     logo: string;
+    color?: | "primary" | "fuchsia";
 }
 
-function AnimatedBoxDingens({ title, description, logo }: AnimatedBoxDingensProps) {
+function AnimatedBoxDingens({ href, title, description, logo, color = "primary" }: AnimatedBoxDingensProps) {
+    const gradientColor = color === "fuchsia" ? "from-fuchsia-500 to-indigo-500" : "from-primary-500 to-indigo-500";
+
     return (
         <div>
-            <a
-                className="landing_counter-border w-[calc(100%_-_0px)] h-[304]px sm:!w-[488px] sm:h-[352px] group"
-                href="/repo">
-                <i aria-hidden="true" className="opacity-0 group-hover:opacity-100"></i>
+            <Link
+                href={href}
+                className="landing_counter-border w-[calc(100%_-_0px)] h-[304]px sm:!w-[488px] sm:h-[352px] group">
+                <i
+                    aria-hidden="true"
+                    className="opacity-0 group-hover:opacity-100" />
 
                 <div className="relative w-full h-full max-w-full !pb-12 pt-8 md:!pb-4 md:!pt-4 p-3 rounded-xl overflow-hidden flex flex-col items-center justify-center border border-[rgba(255,255,255,0.05)] turborepoCardBg">
                     <div className="flex items-center justify-center flex-1 mb-7 md:mb-0">
                         <div className="relative w-24 h-24">
-                            <div className="pointer-events-none absolute w-[261px] h-[261px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-[#FF3358] to-[#FF4FD8] mix-blend-normal opacity-[0.15] blur-[60px]"></div>
+                            <div className={classNames("pointer-events-none absolute w-[261px] h-[261px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b mix-blend-normal opacity-[0.15] blur-[60px]", gradientColor)} />
+
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                 <div className="contents">
                                     <svg
@@ -199,29 +218,30 @@ function AnimatedBoxDingens({ title, description, logo }: AnimatedBoxDingensProp
                         </p>
                     </div>
                 </div>
-            </a>
+            </Link>
         </div>
     )
 }
 
 interface TrustedByLogoParams {
+    href: string;
     src: string;
     width: number;
     height: number;
     alt?: string;
 }
 
-function TrustedByLogo({ src, width, height, alt }: TrustedByLogoParams) {
+function TrustedByLogo({ href, src, width, height, alt }: TrustedByLogoParams) {
     return (
-        <div className="w-48 lg:w-40 flex items-center justify-center">
-            <img
+        <Link
+            href={href}
+            className="w-48 lg:w-40 flex items-center justify-center transform opacity-80 brightness-[100] grayscale filter transition-transform duration-300 hover:-translate-y-[4px] hover:opacity-100 hover:brightness-100 hover:grayscale-0">
+            <Image
                 alt={alt ?? src}
                 src={src}
                 width={width}
                 height={height}
-                decoding="async"
-                data-nimg="future"
                 className="mx-8 inline" />
-        </div>
+        </Link>
     )
 }
