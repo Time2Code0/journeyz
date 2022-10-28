@@ -1,0 +1,18 @@
+@screen nav {
+
+    /**
+      Adds an invisible box above the menu to keep the menu
+      open during hover. This avoids adding a top padding to the
+      menu and an extra wrapper element.
+    */
+    .navItem:after {
+        @apply absolute top-12 z-10 h-10 bg-transparent;
+        content: '';
+        left: 10%;
+        right: 10%;
+    }
+
+    .fitContent {
+        width: fit-content;
+    }
+}
