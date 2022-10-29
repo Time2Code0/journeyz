@@ -4,7 +4,6 @@ CMS: https://hygraph.com oder https://strapi.io
 
 Ideen Homepage: 
 - https://webflow.com/made-in-webflow/website/ander2022
-- https://webflow.com/made-in-webflow/website/kwoodill
 - https://webflow.com/made-in-webflow/website/FAQ-Accordions-Webflow-Cloneable-Template-BRIX-Templates
 - https://webflow.com/made-in-webflow/website/highfivestudio
 - https://webflow.com/made-in-webflow/website/automatic-tabs and https://webflow.com/made-in-webflow/website/3-Website-Tabs-Webflow-Template-or-BRIX-Templates
