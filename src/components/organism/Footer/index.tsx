@@ -12,7 +12,7 @@ export default function Footer({ showStartLearningBanner }: FooterProps) {
     return (
         <footer>
             {showStartLearningBanner && (
-                <div className="relative">
+                <div className="relative mt-16">
                     <div className="absolute bottom-0 left-0 w-full h-[100px] rounded-t-2xl bg-gray-50 dark:bg-gray-800" />
 
                     <div className="relative block lg:flex justify-between items-center px-12 lg:px-24 py-8 lg:py-16 mx-4 lg:mx-auto max-w-7xl text-center lg:text-left bg-primary-500 rounded-3xl">

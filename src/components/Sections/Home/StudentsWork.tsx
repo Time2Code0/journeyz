@@ -10,11 +10,20 @@ import {
     useAnimationFrame
 } from "framer-motion";
 import { wrap } from "@motionone/utils";
+import { SectionTitle } from "@components/molecules";
 
 export default function StudentsWork() {
     return (
         <section id="testimonials">
-            <div className="overflow-hidden">
+            <SectionTitle>
+                <div className="text-center">
+                    <span className="text-primary-500">420 Students</span> have joined the course!
+                    <br />
+                    Have a look at their works
+                </div>
+            </SectionTitle>
+
+            <div className="mt-16 overflow-hidden">
                 <ParallaxCards
                     texts={[
                         "DON'T BOTHER YOUR DEV-TEAM WITH DAILY CHANGES",
