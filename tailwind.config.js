@@ -23,6 +23,7 @@ module.exports = {
           800: 'hsla(212, 32%, 10%, 100%)',
           900: 'hsla(212, 32%, 5%, 100%)',
         },
+        primaryTransparentBackground: 'hsla(217, 91%, 60%, 20%)',
       },
       screens:{
         'nav': '1170px',
