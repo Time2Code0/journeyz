@@ -20,7 +20,7 @@ export function CtaButtons({ className }: CtaButtonsProps) {
             <Button
                 className="justify-center"
                 color="primary"
-                href="/contact"
+                href="/login"
                 onClick={hideMobileMenu}
             >
                 Login
