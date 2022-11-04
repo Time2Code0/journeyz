@@ -44,7 +44,7 @@ interface FeaturedCourseItemProps {
 function FeaturedCourseItem({ course }: FeaturedCourseItemProps) {
     return (
         <motion.div whileHover="hover" className="bg-gray-800">
-            <Link className="flex flex-col lg:flex-row justify-between min-h-full group" href="courses/test">
+            <Link className="flex flex-col lg:flex-row justify-between min-h-full group" href="/courses/test">
                 <div className="overflow-hidden lg:max-w-2xl">
                     <motion.img
                         src={course.previewImage}

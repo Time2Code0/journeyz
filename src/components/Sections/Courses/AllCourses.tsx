@@ -63,7 +63,7 @@ interface CourseItemProps {
 function CourseItem({ course }: CourseItemProps) {
     return (
         <motion.div whileHover="hover" className="bg-gray-800">
-            <Link className="flex flex-col min-h-full group" href="courses/test">
+            <Link className="flex flex-col min-h-full group" href="/courses/test">
                 <div className="overflow-hidden">
                     <motion.img
                         src={course.previewImage}

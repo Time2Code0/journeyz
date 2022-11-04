@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function StartLearingNowParallax() {
     return (
-        <section className="mt-16 mp-12">
+        <section className="mt-16 pt-12">
             <div className="bg-primary-500 py-16 lg:py-32 overflow-hidden">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="relative flex flex-col lg:flex-row justify-between items-center">
