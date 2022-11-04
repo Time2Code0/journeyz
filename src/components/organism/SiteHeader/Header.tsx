@@ -73,7 +73,7 @@ export default function Header({ navItems }: HeaderProps) {
 
                         <div className="flex items-center">
                             <Link href="/">
-                                <span className="sr-only">Hygraph</span>
+                                <span className="sr-only">JourneyZ</span>
 
                                 <Logo
                                     className="flex items-center group cursor-pointer"

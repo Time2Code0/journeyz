@@ -5,10 +5,15 @@ import Header from './Header';
 import { INavItem } from './types';
 
 const navItems: INavItem[] = [
+    // {
+    //     id: `courses`,
+    //     label: `Courses`,
+    //     content: Courses,
+    // },
     {
         id: `courses`,
         label: `Courses`,
-        content: Courses,
+        href: "/courses"
     },
     {
         id: `tutorials`,

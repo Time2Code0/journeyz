@@ -29,7 +29,7 @@ export function CtaButtons({ className }: CtaButtonsProps) {
             <Button
                 className="justify-center"
                 color="primary"
-                href="https://app.hygraph.com/signup"
+                href="/signup"
                 onClick={hideMobileMenu}
             >
                 Join
