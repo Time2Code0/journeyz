@@ -13,7 +13,7 @@ export default function Courses({ className }: CoursesProps) {
         <DropdownMenu className={className}>
             <li>
                 <MenuColumn
-                    className="nav:border-r nav:border-gray-50 nav:dark:border-gray-800"
+                    className="nav:border-r nav:border-gray-800"
                     title="Use Cases"
                     ctaLinkProps={{
                         href: `/use-cases`,

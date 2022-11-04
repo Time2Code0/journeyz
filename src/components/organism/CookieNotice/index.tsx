@@ -4,7 +4,7 @@ import { Button } from "@components/molecules";
 
 export default function CookieNotice() {
     return (
-        <div className="fixed top-auto left-6 sm:left-auto right-6 sm:right-8 bottom-6 sm:bottom-8 py-8 px-6 max-w-lg bg-gray-50 dark:bg-gray-800 shadow-lg rounded-xl">
+        <div className="fixed top-auto left-6 sm:left-auto right-6 sm:right-8 bottom-6 sm:bottom-8 py-8 px-6 max-w-lg bg-gray-800 shadow-lg rounded-xl">
             <div>
                 <H5 className="mb-2">
                     Our website uses cookies

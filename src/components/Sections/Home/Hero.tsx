@@ -213,7 +213,7 @@ function AnimatedBoxDingens({ href, title, description, logo, color = "primary" 
                             {title}
                         </H2>
 
-                        <p className="text-lg !w-[280px] md:!w-[340px] font-space-grotesk text-center opacity-50 dark:opacity-70">
+                        <p className="text-lg !w-[280px] md:!w-[340px] font-space-grotesk text-center opacity-70">
                             {description}
                         </p>
                     </div>

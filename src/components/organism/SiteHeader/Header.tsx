@@ -63,10 +63,10 @@ export default function Header({ navItems }: HeaderProps) {
                         className={classNames(
                             `mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative flex h-full items-center justify-between nav:rounded`,
                             {
-                                'header-fixed bg-white dark:bg-gray-900 shadow-2xl':
+                                'header-fixed bg-gray-900 shadow-2xl':
                                     isScrollingUp && y > threshold,
                             },
-                            { 'mobile-menu-open bg-white dark:bg-gray-900': isMobileMenuOpen },
+                            { 'mobile-menu-open bg-gray-900': isMobileMenuOpen },
                         )}
                     >
                         {/* Header left: Logo and nav */}
@@ -90,7 +90,7 @@ export default function Header({ navItems }: HeaderProps) {
                                     `fixed top-16 left-0 right-0 bottom-0 flex flex-col justify-between nav:static nav:left-auto nav:top-auto nav:ml-7 nav:h-full nav:flex-row`,
                                     {
                                         'hidden nav:flex': !isMobileMenuOpen,
-                                        'z-50 bg-white dark:bg-gray-900': isMobileMenuOpen,
+                                        'z-50 bg-gray-900': isMobileMenuOpen,
                                     },
                                 )}
                                 items={navItems}

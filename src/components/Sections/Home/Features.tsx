@@ -47,7 +47,7 @@ function FeatureSlide({ title, children, className, color }: FeatureSlideProps) 
     const textColor = color === "indigo" ? "text-indigo-500" : color === "fuchsia" ? "text-fuchsia-500" : "text-primary-500";
 
     return (
-        <div className={classNames("relative lg:sticky border-t-2 bg-white dark:bg-gray-900", borderColor, className)}>
+        <div className={classNames("relative lg:sticky border-t-2 bg-gray-900", borderColor, className)}>
             <div className="px-[5%]">
                 <div className="mx-auto w-full max-w-7xl">
                     <H4 className={textColor}>

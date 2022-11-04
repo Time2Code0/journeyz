@@ -23,7 +23,7 @@ export function MenuSidebarLink({
     return (
         <Link
             href={href}
-            className="main-nav-link flex rounded-md p-1 leading-none text-gray-900 dark:text-white transition-colors hover:text-primary-500"
+            className="main-nav-link flex rounded-md p-1 leading-none text-white transition-colors hover:text-primary-500"
         >
             <div className="relative mr-4">
                 <Image
@@ -41,7 +41,7 @@ export function MenuSidebarLink({
                 />
             </div>
             <div className="mt-2">
-                <div className="text-xs font-medium uppercase leading-none tracking-wider text-gray-900 dark:text-white">
+                <div className="text-xs font-medium uppercase leading-none tracking-wider text-white">
                     {label}
                 </div>
                 {title && (

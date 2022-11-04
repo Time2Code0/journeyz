@@ -126,13 +126,13 @@ function Card({ text }: CardProps) {
     return (
         <div
             className="relative w-[35vw]">
-            <div className="relative z-30 p-[5vw] lg:px-[3vw] lg:py-[6vw] flx justify-center items-center text-center h-full border-2 border-gray-900 dark:border-white rounded-2xl bg-white dark:bg-gray-900">
+            <div className="relative z-30 p-[5vw] lg:px-[3vw] lg:py-[6vw] flx justify-center items-center text-center h-full border-2 border-white rounded-2xl bg-gray-900">
                 <H4>
                     {text}
                 </H4>
             </div>
-            <div className="absolute inset-0 z-20 flex justify-center items-center h-full border-2 rounded-2xl border-primary-500 translate-x-2 translate-y-2 bg-white dark:bg-gray-900" />
-            <div className="absolute inset-0 z-10 flex justify-center items-center h-full border-2 rounded-2xl border-primary-500 translate-x-4 translate-y-4 bg-white dark:bg-gray-900" />
+            <div className="absolute inset-0 z-20 flex justify-center items-center h-full border-2 rounded-2xl border-primary-500 translate-x-2 translate-y-2 bg-gray-900" />
+            <div className="absolute inset-0 z-10 flex justify-center items-center h-full border-2 rounded-2xl border-primary-500 translate-x-4 translate-y-4 bg-gray-900" />
         </div>
     )
 }

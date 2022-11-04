@@ -40,7 +40,7 @@ export default function Button({
     const hoverClass = {
         regular: {
             primary: `hover:bg-primary-400`,
-            grey: `hover:bg-gray-100 dark:hover:bg-gray-700`,
+            grey: `hover:bg-gray-700`,
         },
         minimal: {
             primary: ``,
@@ -55,7 +55,7 @@ export default function Button({
     const styleClass = {
         regular: {
             primary: `bg-primary-500 border-transparent text-white`,
-            grey: `bg-gray-50 dark:bg-gray-800 border-transparent text-primary-500`,
+            grey: `bg-gray-800 border-transparent text-primary-500`,
         },
         minimal: {
             primary: `bg-transparent border-transparent`,

@@ -27,14 +27,14 @@ export function MenuColumn({
                 className,
                 isSidebar ? `nav:w-[23rem]` : `nav:w-[18rem]`,
                 {
-                    'hidden space-y-3 border-l border-gray-50 dark:border-gray-800 bg-gray-50 dark:bg-gray-800': isSidebar,
+                    'hidden space-y-3 border-l border-gray-800 bg-gray-800': isSidebar,
                 },
             )}
         >
             {title !== null && (
                 <li
                     className={classNames(
-                        `text-xs font-medium uppercase leading-none tracking-wider text-gray-900 dark:text-white`,
+                        `text-xs font-medium uppercase leading-none tracking-wider text-white`,
                         title === undefined ? `h-0 nav:h-auto nav:pb-5` : `pb-5`,
                     )}
                 >

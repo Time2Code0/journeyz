@@ -13,7 +13,7 @@ export default function Footer({ showStartLearningBanner }: FooterProps) {
         <footer>
             {showStartLearningBanner && (
                 <div className="relative mt-16">
-                    <div className="absolute bottom-0 left-0 w-full h-[100px] rounded-t-2xl bg-gray-50 dark:bg-gray-800" />
+                    <div className="absolute bottom-0 left-0 w-full h-[100px] rounded-t-2xl bg-gray-800" />
 
                     <div className="relative block lg:flex justify-between items-center px-12 lg:px-24 py-8 lg:py-16 mx-4 lg:mx-auto max-w-7xl text-center lg:text-left bg-primary-500 rounded-3xl">
                         <div>
@@ -50,7 +50,7 @@ export default function Footer({ showStartLearningBanner }: FooterProps) {
                 </div>
             )}
 
-            <div className="bg-gray-50 dark:bg-gray-800">
+            <div className={classNames("bg-gray-800", !showStartLearningBanner ? "mt-16" : "")}>
                 <div className="flex justify-between mx-auto px-4 lg:px-6 py-12 text-center flex-wrap lg:flex-nowrap flex-col lg:flex-row max-w-6xl">
                     <Column>
                         <Link href="/" className="relative flex items-start w-[220px] h-[38px]">
