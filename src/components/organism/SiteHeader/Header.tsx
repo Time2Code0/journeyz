@@ -61,9 +61,9 @@ export default function Header({ navItems }: HeaderProps) {
                 >
                     <div
                         className={classNames(
-                            `mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative flex h-full items-center justify-between nav:rounded`,
+                            `mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative flex h-full items-center justify-between nav:rounded bg-gray-900`,
                             {
-                                'header-fixed bg-gray-900 shadow-2xl':
+                                'header-fixed shadow-2xl':
                                     isScrollingUp && y > threshold,
                             },
                             { 'mobile-menu-open bg-gray-900': isMobileMenuOpen },

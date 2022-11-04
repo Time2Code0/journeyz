@@ -3,7 +3,7 @@ import { Features, Hero, StudentsWork, Faq } from "@components/Sections/Home";
 
 export default function Home() {
   return (
-    <DefaultLayout showStartLearningBanner>
+    <DefaultLayout showStartLearningBanner showBreadcrumbs={false}>
       <main>
         <Hero />
         <Features />
