@@ -6,6 +6,7 @@ Ideen Homepage:
 - https://webflow.com/made-in-webflow/website/ander2022
 - https://webflow.com/made-in-webflow/website/highfivestudio
 - https://webflow.com/made-in-webflow/website/automatic-tabs and https://webflow.com/made-in-webflow/website/3-Website-Tabs-Webflow-Template-or-BRIX-Templates
+- https://coursetemplate-showcase.webflow.io/video
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
