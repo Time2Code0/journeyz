@@ -1,12 +1,42 @@
 # JourneyZ
 
+## CMS:
+
 CMS: https://hygraph.com oder https://strapi.io
 
-Ideen Homepage: 
+## Ideen Homepage: 
+
 - https://webflow.com/made-in-webflow/website/ander2022
 - https://webflow.com/made-in-webflow/website/highfivestudio
 - https://webflow.com/made-in-webflow/website/automatic-tabs and https://webflow.com/made-in-webflow/website/3-Website-Tabs-Webflow-Template-or-BRIX-Templates
 - https://coursetemplate-showcase.webflow.io/video
+- https://ui.dev/modern-javascript (Course Promotion Page)
+- Input Field Validation: https://refokus-form-validation.webflow.io (For Login/SignUp)
+- Dashbaord Designs:
+    - https://dribbble.com/shots/18289015-Study-Web-Dashboard
+    - https://dribbble.com/shots/18408032-E-learning-Dashboard-Edubi
+    - https://dribbble.com/shots/18326699-Finance-HR-System-Dashboard-Design
+- How to build a Blog Youtube Videos:
+    - https://www.youtube.com/watch?v=mGEvJzL_NHM
+    - https://www.youtube.com/watch?v=RrykaktBzLM
+
+## Aufbau MDX Content: 
+
+Courses (Folder)
+	- Course 1 (Folder)
+		- index.md (Enthält Basis informationen + Introduction Video)
+		- Modul 1 (Folder)
+			- Lesson 1.mdx (Enthält Informationen zu einer Lesson + Video)
+			- Lesson 2.mdx (Enthält Informationen zu einer Lesson + Video)
+		- Modul 2 (Folder)
+			- Lesson 1.mdx (Enthält Informationen zu einer Lesson + Video)
+	- Course 2 (Folder)
+		- index.md (Enthält Basis informationen + Introduction Video)
+		- Modul 1 (Folder)
+			- Lesson 1.mdx (Enthält Informationen zu einer Lesson + Video)
+			- Lesson 2.mdx (Enthält Informationen zu einer Lesson + Video)
+		- Modul 2 (Folder)
+			- Lesson 1.mdx (Enthält Informationen zu einer Lesson + Video)
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
