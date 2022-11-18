@@ -13,7 +13,7 @@ const navItems: INavItem[] = [
     {
         id: `courses`,
         label: `Courses`,
-        href: "/courses"
+        href: "/all-courses"
     },
     {
         id: `tutorials`,

@@ -30,7 +30,7 @@ const courses: Course[] = [
     },
 ];
 
-export default function AllCourses() {
+export default function Courses() {
     return (
         <section className="mt-16 pt-12" id="all-courses">
             <SectionContainer>

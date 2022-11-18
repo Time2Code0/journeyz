@@ -1,9 +1,11 @@
-import AllCourses from "./AllCourses";
+import Courses from "./Courses";
 import Hero from "./Hero";
 import StartLearingNowParallax from "./StartLearningNowParallax";
 
-export {
+const AllCoursesSection = {
     Hero,
-    AllCourses,
+    Courses,
     StartLearingNowParallax
 }
+
+export default AllCoursesSection;
