@@ -17,6 +17,7 @@ export default function VideoPlayer() {
 
                 {/* CONTROLS */}
                 <div className="absolute bottom-0 left-0 w-full h-[70px] bg-[#0b0b0b] translate-y-[42px] group-hover:translate-y-0 transition-transform duration-[600ms] delay-[600ms] z-20">
+                    {/* BOTTOM */}
                     <div className="absolute flex justify-between items-stretch bottom-0 left-0 w-full h-[50px]">
                         {/* LEFT */}
                         <div className="flex justify-start items-center">
@@ -89,8 +90,31 @@ export default function VideoPlayer() {
                         </div>
                     </div>
 
+                    {/* SEEKBAR */}
                     <div className="absolute top-0 w-full h-[28px] cursor-pointer">
                         <div className="absolute top-[11px] left-[10px] right-[10px] h-[6px] rounded-[3px] bg-[#313131]">
+                            {/* PREVIEW */}
+                            <div className="absolute bottom-[calc(100%_+_22px)] left-0 h-[28px] opacity-0 group-hover:opacity-100 translate-x-[500px]">
+                                <div className="absolute bottom-0 left-0 min-w-[192px] -translate-x-1/2 bg-primary-500 rounded-[10px] shadow-md pointer-events-none">
+                                    <img
+                                        src=""
+                                        className="relative w-full h-[108px] overflow-hidden shadow-sm object-cover rounded-t-[10px]" />
+
+                                    <div className="relative flex min-h-[28px] text-center">
+                                        <div className="p-2 w-[clac(100%_-_65px)] leading-5">
+                                            First Scene
+                                        </div>
+
+                                        <div className="relative w-[65px] h-auto bg-[rgba(0,0,0,0.133)]">
+                                            <div className="absolute flex justify-center items-center top-0 left-0 w-full h-full">
+                                                5:35
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* BUFFER INDICATOR */}
                             <canvas
                                 className="absolute top-0 left-0 w-full h-full"
                                 width={989}
