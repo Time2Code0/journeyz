@@ -1,4 +1,5 @@
 import DefaultLayout from "@components/Layouts/Default";
+import VideoPlayer from "@components/organism/VideoPlayer";
 import { ReactNode } from "react";
 import { H1, H2, H3, H4, H5, Input, SectionContainer } from "../components/atoms";
 import { Button, ErrorCallout, InfoCallout, SuccessCallout, WarningCallout } from "../components/molecules";
@@ -327,6 +328,10 @@ export default function Design() {
 
                 <Section title="Input">
                     <Input inputLabelText="Test" placeholderText="Long Test" />
+                </Section>
+
+                <Section title="Video Player">
+                    <VideoPlayer src="videos/example.mp4" poster="videos/poster.png" />
                 </Section>
             </main>
         </DefaultLayout>
