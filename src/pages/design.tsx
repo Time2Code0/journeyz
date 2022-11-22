@@ -1,43 +1,149 @@
 import DefaultLayout from "@components/Layouts/Default";
-import { H1, H2, H3, H4, H5 } from "../components/atoms";
+import { ReactNode } from "react";
+import { H1, H2, H3, H4, H5, SectionContainer } from "../components/atoms";
 import { Button } from "../components/molecules";
 
 export default function Design() {
     return (
         <DefaultLayout>
             <main>
-                <H1>
+                <Section title="Typography">
+                    <Title title="Display" />
                     Almost before we knew it, we had left the ground.
-                </H1>
-                <H2>
-                    Almost before we knew it, we had left the ground.
-                </H2>
-                <H3>
-                    Almost before we knew it, we had left the ground.
-                </H3>
-                <H4>
-                    Almost before we knew it, we had left the ground.
-                </H4>
-                <H5>
-                    Almost before we knew it, we had left the ground.
-                </H5>
 
-                <Button>
-                    Do something
-                </Button>
+                    <Title title="H1" />
+                    <H1>
+                        Almost before we knew it, we had left the ground.
+                    </H1>
 
-                <Button color="grey">
-                    Do something but in Grey
-                </Button>
+                    <Title title="H2" />
+                    <H2>
+                        Almost before we knew it, we had left the ground.
+                    </H2>
 
-                <Button appearance="outline">
-                    Do something and Outline
-                </Button>
+                    <Title title="H3" />
+                    <H3>
+                        Almost before we knew it, we had left the ground.
+                    </H3>
 
-                <Button appearance="outline" color="grey">
-                    Do something but in Grey and Outline
-                </Button>
+                    <Title title="H4" />
+                    <H4>
+                        Almost before we knew it, we had left the ground.
+                    </H4>
+
+                    <Title title="H5" />
+                    <H5>
+                        Almost before we knew it, we had left the ground.
+                    </H5>
+                </Section>
+
+                <Section title="Buttons">
+                    <div>
+                        <Button size="small" color="primary" appearance="regular">
+                            Test
+                        </Button>
+
+                        <Button size="regular" color="primary" appearance="regular">
+                            Test
+                        </Button>
+
+                        <Button size="large" color="primary" appearance="regular">
+                            Test
+                        </Button>
+                    </div>
+
+                    <div className="mt-4">
+                        <Button size="small" color="grey">
+                            Test
+                        </Button>
+
+                        <Button size="regular" color="grey">
+                            Test
+                        </Button>
+
+                        <Button size="large" color="grey">
+                            Test
+                        </Button>
+                    </div>
+
+                    <div className="mt-4">
+                        <Button size="small" color="primary" appearance="outline">
+                            Test
+                        </Button>
+
+                        <Button size="regular" color="primary" appearance="outline">
+                            Test
+                        </Button>
+
+                        <Button size="large" color="primary" appearance="outline">
+                            Test
+                        </Button>
+                    </div>
+
+                    <div className="mt-4">
+                        <Button size="small" color="grey" appearance="outline">
+                            Test
+                        </Button>
+
+                        <Button size="regular" color="grey" appearance="outline">
+                            Test
+                        </Button>
+
+                        <Button size="large" color="grey" appearance="outline">
+                            Test
+                        </Button>
+                    </div>
+
+                    <div className="mt-4">
+                        <Button size="small" color="primary" appearance="minimal">
+                            Test
+                        </Button>
+
+                        <Button size="regular" color="primary" appearance="minimal">
+                            Test
+                        </Button>
+
+                        <Button size="large" color="primary" appearance="minimal">
+                            Test
+                        </Button>
+                    </div>
+
+                    <div className="mt-4">
+                        <Button size="small" color="grey" appearance="minimal">
+                            Test
+                        </Button>
+
+                        <Button size="regular" color="grey" appearance="minimal">
+                            Test
+                        </Button>
+
+                        <Button size="large" color="grey" appearance="minimal">
+                            Test
+                        </Button>
+                    </div>
+                </Section>
             </main>
         </DefaultLayout>
+    )
+}
+
+function Title({ title }: { title: string }) {
+    return (
+        <p className="mb-2 mt-6">{title}</p>
+    )
+}
+
+interface SectionProps {
+    title?: string;
+    children: ReactNode
+}
+
+function Section({ title, children }: SectionProps) {
+    return (
+        <SectionContainer>
+            {title && (<H2 className="mb-6 mt-8">{title}</H2>)}
+
+            {children}
+        </SectionContainer>
     )
 }

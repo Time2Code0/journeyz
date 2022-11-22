@@ -44,9 +44,10 @@ export default function Faq() {
                 </SectionTitle>
 
                 <div className="mt-16 grid justify-items-stretch items-start gap-4">
-                    {faqData.map(item => {
+                    {faqData.map((item, index) => {
                         return (
                             <FaqItem
+                                key={index}
                                 answer={item.answer}
                                 question={item.question} />
                         )
