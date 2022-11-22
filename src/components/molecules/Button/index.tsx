@@ -11,12 +11,14 @@ type HTMLButtonProps = Omit<
 type Size = 'small' | 'large' | 'regular';
 type Appearance = 'minimal' | 'outline' | 'regular';
 type Color = 'primary' | 'grey';
+type CornerRadius = 'none' | 'regular' | 'full';
 
 export interface ButtonProps extends HTMLButtonProps {
     size?: Size;
     appearance?: Appearance;
     hover?: Appearance;
     color?: Color;
+    cornerRadius?: CornerRadius;
     block?: boolean;
     href?: string;
     onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
@@ -26,13 +28,14 @@ export default function Button({
     block = false,
     children,
     className,
-    color = `primary`,
+    color = 'primary',
     disabled = false,
     href,
     hover,
     onClick,
-    size = `regular`,
-    appearance = `regular`,
+    size = 'regular',
+    appearance = 'regular',
+    cornerRadius = 'none',
     ...rest
 }: ButtonProps) {
     const hoverColor = hover || color;
@@ -65,6 +68,12 @@ export default function Button({
             primary: `bg-transparent border-primary-500 text-primary-500`,
             grey: `bg-transparent border-gray-50 text-primary-500`,
         },
+    };
+
+    const cornerRadiusClass = {
+        none: "",
+        regular: "rounded-lg",
+        full: "rounded-full"
     };
 
     const appearanceVal = (appearanceParam: Appearance) => {
@@ -101,10 +110,11 @@ export default function Button({
     };
 
     const buttonClass = classnames(
-        `border font-medium inline-block rounded-lg text-center transition-all`,
+        `border font-medium inline-block text-center transition-all`,
         sizeClass(size),
         styleClass[appearanceVal(appearance)][colourVal(color)],
         hoverClass[appearanceVal(appearance)][colourVal(hoverColor as Color)],
+        cornerRadiusClass[cornerRadius],
         className,
         {
             'cursor-not-allowed opacity-50': disabled,

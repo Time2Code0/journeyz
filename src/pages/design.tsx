@@ -38,89 +38,265 @@ export default function Design() {
                 </Section>
 
                 <Section title="Buttons">
-                    <div>
-                        <Button size="small" color="primary" appearance="regular">
-                            Test
-                        </Button>
+                    <ul className="flex gap-8">
+                        <li>
+                            <div>
+                                <Button className="mx-4" size="small" color="primary" appearance="regular">
+                                    Test
+                                </Button>
 
-                        <Button size="regular" color="primary" appearance="regular">
-                            Test
-                        </Button>
+                                <Button className="mx-4" size="regular" color="primary" appearance="regular">
+                                    Test
+                                </Button>
 
-                        <Button size="large" color="primary" appearance="regular">
-                            Test
-                        </Button>
-                    </div>
+                                <Button className="mx-4" size="large" color="primary" appearance="regular">
+                                    Test
+                                </Button>
+                            </div>
 
-                    <div className="mt-4">
-                        <Button size="small" color="grey">
-                            Test
-                        </Button>
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey">
+                                    Test
+                                </Button>
 
-                        <Button size="regular" color="grey">
-                            Test
-                        </Button>
+                                <Button className="mx-4" size="regular" color="grey">
+                                    Test
+                                </Button>
 
-                        <Button size="large" color="grey">
-                            Test
-                        </Button>
-                    </div>
+                                <Button className="mx-4" size="large" color="grey">
+                                    Test
+                                </Button>
+                            </div>
 
-                    <div className="mt-4">
-                        <Button size="small" color="primary" appearance="outline">
-                            Test
-                        </Button>
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="primary" appearance="outline">
+                                    Test
+                                </Button>
 
-                        <Button size="regular" color="primary" appearance="outline">
-                            Test
-                        </Button>
+                                <Button className="mx-4" size="regular" color="primary" appearance="outline">
+                                    Test
+                                </Button>
 
-                        <Button size="large" color="primary" appearance="outline">
-                            Test
-                        </Button>
-                    </div>
+                                <Button className="mx-4" size="large" color="primary" appearance="outline">
+                                    Test
+                                </Button>
+                            </div>
 
-                    <div className="mt-4">
-                        <Button size="small" color="grey" appearance="outline">
-                            Test
-                        </Button>
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" appearance="outline">
+                                    Test
+                                </Button>
 
-                        <Button size="regular" color="grey" appearance="outline">
-                            Test
-                        </Button>
+                                <Button className="mx-4" size="regular" color="grey" appearance="outline">
+                                    Test
+                                </Button>
 
-                        <Button size="large" color="grey" appearance="outline">
-                            Test
-                        </Button>
-                    </div>
+                                <Button className="mx-4" size="large" color="grey" appearance="outline">
+                                    Test
+                                </Button>
+                            </div>
 
-                    <div className="mt-4">
-                        <Button size="small" color="primary" appearance="minimal">
-                            Test
-                        </Button>
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="primary" appearance="minimal">
+                                    Test
+                                </Button>
 
-                        <Button size="regular" color="primary" appearance="minimal">
-                            Test
-                        </Button>
+                                <Button className="mx-4" size="regular" color="primary" appearance="minimal">
+                                    Test
+                                </Button>
 
-                        <Button size="large" color="primary" appearance="minimal">
-                            Test
-                        </Button>
-                    </div>
+                                <Button className="mx-4" size="large" color="primary" appearance="minimal">
+                                    Test
+                                </Button>
+                            </div>
 
-                    <div className="mt-4">
-                        <Button size="small" color="grey" appearance="minimal">
-                            Test
-                        </Button>
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" appearance="minimal">
+                                    Test
+                                </Button>
 
-                        <Button size="regular" color="grey" appearance="minimal">
-                            Test
-                        </Button>
+                                <Button className="mx-4" size="regular" color="grey" appearance="minimal">
+                                    Test
+                                </Button>
 
-                        <Button size="large" color="grey" appearance="minimal">
-                            Test
-                        </Button>
-                    </div>
+                                <Button className="mx-4" size="large" color="grey" appearance="minimal">
+                                    Test
+                                </Button>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <Button className="mx-4" size="small" color="primary" appearance="regular" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="primary" appearance="regular" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="primary" appearance="regular" cornerRadius="regular">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="grey" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="grey" cornerRadius="regular">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="primary" appearance="outline" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="primary" appearance="outline" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="primary" appearance="outline" cornerRadius="regular">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" appearance="outline" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="grey" appearance="outline" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="grey" appearance="outline" cornerRadius="regular">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="primary" appearance="minimal" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="primary" appearance="minimal" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="primary" appearance="minimal" cornerRadius="regular">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" appearance="minimal" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="grey" appearance="minimal" cornerRadius="regular">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="grey" appearance="minimal" cornerRadius="regular">
+                                    Test
+                                </Button>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div>
+                                <Button className="mx-4" size="small" color="primary" appearance="regular" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="primary" appearance="regular" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="primary" appearance="regular" cornerRadius="full">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="grey" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="grey" cornerRadius="full">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="primary" appearance="outline" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="primary" appearance="outline" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="primary" appearance="outline" cornerRadius="full">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" appearance="outline" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="grey" appearance="outline" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="grey" appearance="outline" cornerRadius="full">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="primary" appearance="minimal" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="primary" appearance="minimal" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="primary" appearance="minimal" cornerRadius="full">
+                                    Test
+                                </Button>
+                            </div>
+
+                            <div className="mt-4">
+                                <Button className="mx-4" size="small" color="grey" appearance="minimal" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="regular" color="grey" appearance="minimal" cornerRadius="full">
+                                    Test
+                                </Button>
+
+                                <Button className="mx-4" size="large" color="grey" appearance="minimal" cornerRadius="full">
+                                    Test
+                                </Button>
+                            </div>
+                        </li>
+                    </ul>
                 </Section>
 
                 <Section title="Callouts">
