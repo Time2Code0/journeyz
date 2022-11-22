@@ -50,8 +50,8 @@ export default function Button({
             grey: ``,
         },
         outline: {
-            primary: `hover:bg-primary-400 hover:text-white`,
-            grey: `hover:bg-gray-50`,
+            primary: `hover:bg-primary-400 hover:border-primary-400 hover:text-white`,
+            grey: `hover:bg-gray-50 hover:border-gray-50`,
         },
     };
 
