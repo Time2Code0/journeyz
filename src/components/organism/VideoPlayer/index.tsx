@@ -13,6 +13,17 @@ export default function VideoPlayer({ src, poster }: Props) {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
+    const [duration, setDuration] = useState("");
+    const [currentTime, setCurrentTime] = useState(new Date(0 * 1000).toISOString().substr(11, 8));
+
+    useEffect(()=>{
+        const duration = player?.current?.duration;
+        if(duration == undefined){
+            return;
+        }
+
+        setDuration(new Date(duration * 1000).toISOString().substr(11, 8));
+    }, [player?.current?.duration]);
 
     const togglePlay = () => {
         setIsPlaying(!isPlaying);
@@ -21,6 +32,13 @@ export default function VideoPlayer({ src, poster }: Props) {
     useEffect(() => {
         isPlaying ? player?.current?.play() : player?.current?.pause();
     }, [isPlaying, player]);
+
+    const timeUpdated = () => {
+        const currentTime = player?.current?.currentTime;
+        if (currentTime != undefined) {
+            setCurrentTime(new Date(currentTime * 1000).toISOString().substr(11, 8));
+        }
+    }
 
     return (
         <div className="relative w-full">
@@ -36,6 +54,7 @@ export default function VideoPlayer({ src, poster }: Props) {
                         src={src}
                         poster={poster}
                         className="absolute top-0 left-0 w-full h-full outline-none"
+                        onTimeUpdate={timeUpdated}
                         width={1920}
                         height={1080} />
 
@@ -75,9 +94,9 @@ export default function VideoPlayer({ src, poster }: Props) {
                             </button>
 
                             <span className="relative mr-3 text-lg font-medium whitespace-nowrap cursor-pointer">
-                                <span className="inline-block">0:01</span>
+                                <span className="inline-block">{currentTime}</span>
                                 <span className="inline-block opacity-30 mx-1">/</span>
-                                <span className="inline-block opacity-30">420:69</span>
+                                <span className="inline-block opacity-30">{duration}</span>
                                 <span></span>
                             </span>
                         </div>
