@@ -12,6 +12,7 @@ CMS: https://hygraph.com oder https://strapi.io
 - https://coursetemplate-showcase.webflow.io/video
 - https://ui.dev/modern-javascript (Course Promotion Page)
 - Input Field Validation: https://refokus-form-validation.webflow.io (For Login/SignUp)
+- https://github.com/shadcn/taxonomy/blob/main/components/dashboard/editor.tsx (Text Editor)
 - Dashbaord Designs:
     - https://dribbble.com/shots/18289015-Study-Web-Dashboard
     - https://dribbble.com/shots/18408032-E-learning-Dashboard-Edubi
