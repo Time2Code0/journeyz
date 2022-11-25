@@ -21,6 +21,11 @@ CMS: https://hygraph.com oder https://strapi.io
     - https://www.youtube.com/watch?v=mGEvJzL_NHM
     - https://www.youtube.com/watch?v=RrykaktBzLM
 
+## Contentlayer:
+
+https://www.contentlayer.dev/docs/getting-started
+https://github.com/mxkaske/doxi/tree/main/apps/web
+
 ## Aufbau MDX Content: 
 
 Courses (Folder)
