@@ -10,19 +10,25 @@ interface Props {
 export default function VideoPlayer({ src, poster }: Props) {
     const player = useRef<HTMLVideoElement>(null);
     const preview = useRef<HTMLDivElement>(null);
+    const seekbar = useRef<HTMLDivElement>(null);
+    const volume = useRef<HTMLDivElement>(null);
+    const volumeProgress = useRef<HTMLDivElement>(null);
+    const seekbarProgressCanvas = useRef<HTMLCanvasElement>(null);
 
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
     const [duration, setDuration] = useState("");
-    const [currentTime, setCurrentTime] = useState(new Date(0 * 1000).toISOString().substr(11, 8));
+    const [currentTime, setCurrentTime] = useState(formatTime(0));
+    const [currentPreviewTime, setCurrentPreviewTime] = useState(formatTime(0));
 
-    useEffect(()=>{
+    useEffect(() => {
         const duration = player?.current?.duration;
-        if(duration == undefined){
+        if (duration == undefined) {
             return;
         }
 
-        setDuration(new Date(duration * 1000).toISOString().substr(11, 8));
+        setDuration(formatTime(duration));
     }, [player?.current?.duration]);
 
     const togglePlay = () => {
@@ -33,12 +39,142 @@ export default function VideoPlayer({ src, poster }: Props) {
         isPlaying ? player?.current?.play() : player?.current?.pause();
     }, [isPlaying, player]);
 
+    const toggleMute = () => {
+        setIsMuted(!isMuted);
+    };
+
+    useEffect(() => {
+        if (player.current != null) {
+            player.current.muted = isMuted;
+        }
+    }, [isMuted, player])
+
     const timeUpdated = () => {
         const currentTime = player?.current?.currentTime;
         if (currentTime != undefined) {
-            setCurrentTime(new Date(currentTime * 1000).toISOString().substr(11, 8));
+            setCurrentTime(formatTime(currentTime));
         }
     }
+
+    const movePreview = (clientX: number) => {
+        if (seekbar.current != null && preview.current != null && player.current != null) {
+            const bounding = seekbar.current.getBoundingClientRect();
+            const t = clientX - bounding.left;
+
+            // TODO: Preview should stop at the left and right (so it does not vanish behind overflow hidden)
+            preview.current.style.transform = `translateX(${t}px)`;
+
+            // Set Preview Time
+            setCurrentPreviewTime(formatTime(Math.min(Math.max(t / bounding.width, 0), 1) * player.current.duration));
+
+            // TODO: Set Preview Secne Title and Image
+        }
+    }
+
+    const onVolumeMouseMove = (event: any) => {
+        setVolumeProgress(event.clientX);
+    };
+
+    const setVolumeProgress = (clientX: number) => {
+        if (volumeProgress.current != null && volume.current != null && player.current != null) {
+            const volumeBounding = volume.current.getBoundingClientRect();
+
+            let t = (clientX - volumeBounding.left) / volumeBounding.width;
+            t = Math.min(Math.max(t, 0), 1)
+            player.current.volume = t;
+
+            // Move Volume Progressbar
+            volumeProgress.current.style.transform = `translateX(${100 * -(1 - t)}%)`
+        }
+    }
+
+    const updateSeekbarProgressCanvas = () => {
+        const pixelRatio = window.devicePixelRatio || 1;
+        const duration = player?.current?.duration || 0;
+
+        if (player.current != null && seekbar.current != null && seekbarProgressCanvas.current != null) {
+            const seekbarBounding = seekbar.current.getBoundingClientRect();
+
+            const t = player.current.currentTime;
+            const i = seekbarBounding.height / 2 * pixelRatio;
+            const n = seekbarBounding.width * pixelRatio - 2 * i;
+
+            const seekbarProgressCanvasContext = seekbarProgressCanvas.current.getContext('2d');
+            if (seekbarProgressCanvasContext != null) {
+                seekbarProgressCanvasContext.clearRect(0, 0, seekbarBounding.width * pixelRatio, seekbarBounding.height * pixelRatio);
+                seekbarProgressCanvasContext.lineWidth = seekbarBounding.height * pixelRatio * 2; // 28px * 2
+                seekbarProgressCanvasContext.lineCap = "round";
+                seekbarProgressCanvasContext.strokeStyle = "#705df2";
+
+                // Draw Buffer
+                for (let e = 0; e < player.current.buffered.length; e++) {
+                    const bufferStart = player.current.buffered.start(e) / duration;
+                    const bufferEnd = player.current.buffered.end(e) / duration;
+
+                    seekbarProgressCanvasContext.beginPath();
+                    seekbarProgressCanvasContext.moveTo(i + bufferStart * n, i);
+                    seekbarProgressCanvasContext.lineTo(i + bufferEnd * n, i);
+                    seekbarProgressCanvasContext.stroke();
+                }
+
+                // Draw current Time
+                if (!isNaN(player.current.duration) && player.current.duration !== 1 / 0) {
+                    seekbarProgressCanvasContext.strokeStyle = "#ffffff";
+                    seekbarProgressCanvasContext.beginPath();
+                    // seekbarProgressCanvasContext.moveTo(i, i);
+                    // seekbarProgressCanvasContext.lineTo(i + n * t / duration, i);
+                    seekbarProgressCanvasContext.moveTo(i, i);
+                    seekbarProgressCanvasContext.lineTo(i + n * t / duration, i);
+                    seekbarProgressCanvasContext.stroke();
+
+                    const e = 1 - player.current.duration / duration;
+                    //!isNaN(e) && e > .1 && (this.$disabled.style.width = 100 * e + "%")
+                }
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (seekbarProgressCanvas.current != null && seekbar.current != null) {
+            const seekbarBounding = seekbar.current.getBoundingClientRect();
+            const pixelRatio = window.devicePixelRatio || 1;
+
+            seekbarProgressCanvas.current.width = seekbarBounding.width * pixelRatio;
+            seekbarProgressCanvas.current.height = seekbarBounding.height * pixelRatio;
+        }
+    }, []);
+
+    const seekbarSetTime = (e: number) => {
+        if (seekbar.current != null && player.current != null) {
+            const seekbarBounding = seekbar.current.getBoundingClientRect();
+
+            let t = (e - seekbarBounding.left) / seekbarBounding.width;
+            t = Math.min(Math.max(t, 0), 1);
+            const i = t * player.current.duration;
+            player.current.currentTime = i;
+            updateSeekbarProgressCanvas();
+        }
+    }
+
+    function formatTime(seconds: number) {
+        let t = Math.round(seconds);
+        const i = Math.floor(seconds / 3600);
+        t -= 3600 * i;
+        const n = Math.floor(t / 60);
+        t -= 60 * n;
+        const r = t;
+        let s = [];
+        return i && s.push(i),
+            s.push(n),
+            s.push(r),
+            s = s.map((e, t) => 0 === t ? String(e) : String(e).padStart(2, "0")),
+            s.join(":");
+    }
+
+    const seekbarMove = (clientX: number) => {
+        seekbarSetTime(clientX);
+        movePreview(clientX);
+    };
 
     return (
         <div className="relative w-full">
@@ -55,6 +191,12 @@ export default function VideoPlayer({ src, poster }: Props) {
                         poster={poster}
                         className="absolute top-0 left-0 w-full h-full outline-none"
                         onTimeUpdate={timeUpdated}
+                        onProgress={updateSeekbarProgressCanvas}
+                        onLoadedMetadata={() => {
+                            updateSeekbarProgressCanvas();
+
+                            // TODO: Get Duration from here instad of ueEffect
+                        }}
                         width={1920}
                         height={1080} />
 
@@ -104,7 +246,9 @@ export default function VideoPlayer({ src, poster }: Props) {
                         {/* RIGHT */}
                         <div className="flex justify-end items-center gap-4">
                             <div className="relative w-[160px] h-full">
-                                <button className="flex items-center justify-center w-8 h-full cursor-pointer">
+                                <button
+                                    className="flex items-center justify-center w-8 h-full cursor-pointer"
+                                    onClick={toggleMute}>
                                     <div className="w-[25px] h-[17px]">
                                         <svg
                                             id="Calque_1"
@@ -115,16 +259,26 @@ export default function VideoPlayer({ src, poster }: Props) {
                                             viewBox="0 0 24.67 16.53"
                                             className="fill-white">
                                             <path
-                                                className="wave"
+                                                className={classNames("transition-opacity", isMuted ? "opacity-30" : "")}
                                                 d="M19.37,14.49a1.5,1.5,0,0,1,0-3,2.58,2.58,0,0,0,2.3-2.78,2.57,2.57,0,0,0-2.3-2.77,1.5,1.5,0,1,1,0-3,5.56,5.56,0,0,1,5.3,5.77A5.56,5.56,0,0,1,19.37,14.49Z" />
                                             <path d="M15.09.3A2,2,0,0,0,13.14.22l-6,3c-.07,0-.14.1-.21.15H1.5A1.5,1.5,0,0,0,0,4.91v6.82a1.5,1.5,0,0,0,1.5,1.5H7a1.19,1.19,0,0,0,.23.16l6,2.93A2,2,0,0,0,16,14.53V2A2,2,0,0,0,15.09.3ZM3,6.41H6.07v3.82H3Zm10,6.51L9.11,11V5.64l3.93-2Z" />
                                         </svg>
                                     </div>
                                 </button>
 
-                                <div className="absolute top-0 right-0 w-[calc(100%_-_32px)] h-full cursor-pointer">
+                                <div
+                                    ref={volume}
+                                    className="absolute top-0 right-0 w-[calc(100%_-_32px)] h-full cursor-pointer"
+                                    onMouseDown={(e) => {
+                                        setVolumeProgress(e.clientX);
+                                        addEventListener("mousemove", onVolumeMouseMove);
+                                        addEventListener("mouseup", () => removeEventListener("mousemove", onVolumeMouseMove), { once: !0 })
+                                    }}
+                                    onTouchMove={(e) => setVolumeProgress(e.touches[0].clientX)}
+                                    onTouchStart={(e) => setVolumeProgress(e.touches[0].clientX)}
+                                >
                                     <div className="absolute top-[calc(50%_-_3px)] left-2 right-3 h-[6px] bg-[#313131] rounded-[3px] overflow-hidden">
-                                        <div className="absolute top-0 left-0 w-full h-full bg-white rounded-[3px] -translate-x-1/2" />
+                                        <div ref={volumeProgress} className="absolute top-0 left-0 w-full h-full bg-white rounded-[3px]" />
                                     </div>
                                 </div>
                             </div>
@@ -137,13 +291,18 @@ export default function VideoPlayer({ src, poster }: Props) {
 
                     {/* SEEKBAR */}
                     <div
+                        ref={seekbar}
                         className="absolute top-0 w-full h-[28px] cursor-pointer"
                         onMouseEnter={() => setShowPreview(true)}
-                        onMouseLeave={() => setShowPreview(false)}>
+                        onMouseLeave={() => setShowPreview(false)}
+                        onMouseDown={(e) => seekbarMove(e.clientX)}
+                        onMouseMove={(e) => movePreview(e.clientX)}
+                        onTouchMove={(e) => seekbarMove(e.touches[0].clientX)}
+                        onTouchStart={(e) => seekbarMove(e.touches[0].clientX)}>
                         <div className="absolute top-[11px] left-[10px] right-[10px] h-[6px] rounded-[3px] bg-[#313131]">
                             {/* PREVIEW */}
                             <div
-                                className={classNames("absolute bottom-[calc(100%_+_22px)] left-0 h-[28px] translate-x-[500px]", showPreview ? "opacity-100" : "opacity-0")}
+                                className={classNames("absolute bottom-[calc(100%_+_22px)] left-0 h-[28px]", showPreview ? "opacity-100" : "opacity-0")}
                                 ref={preview}>
                                 <div className="absolute bottom-0 left-0 min-w-[192px] -translate-x-1/2 bg-primary-500 rounded-[10px] shadow-md pointer-events-none">
                                     <img
@@ -157,7 +316,7 @@ export default function VideoPlayer({ src, poster }: Props) {
 
                                         <div className="relative w-[65px] h-auto bg-[rgba(0,0,0,0.133)]">
                                             <div className="absolute flex justify-center items-center top-0 left-0 w-full h-full">
-                                                5:35
+                                                {currentPreviewTime}
                                             </div>
                                         </div>
                                     </div>
@@ -166,6 +325,7 @@ export default function VideoPlayer({ src, poster }: Props) {
 
                             {/* BUFFER INDICATOR */}
                             <canvas
+                                ref={seekbarProgressCanvas}
                                 className="absolute top-0 left-0 w-full h-full"
                                 width={989}
                                 height={6} />
