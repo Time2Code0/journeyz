@@ -1,13 +1,13 @@
 import { defineDocumentType } from "contentlayer/source-files";
 import { getUrl, getHeadings, getPathSegments } from "contentlayer/utils";
 
-export const Course = defineDocumentType(() => ({
-    name: 'Course',
-    filePathPattern: `courses/**/*.mdx`,
+export const Lesson = defineDocumentType(() => ({
+    name: 'Lesson',
+    filePathPattern: `courses/**/**/*.mdx`,
     fields: {
         title: {
             type: 'string',
-            description: 'The title of the course',
+            description: 'The title of the lesson',
             required: true,
         },
     },
