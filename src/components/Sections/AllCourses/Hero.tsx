@@ -1,9 +1,13 @@
 import { H1, H3, Link, SectionContainer } from "@components/atoms";
 import { Button } from "@components/molecules";
 import { motion } from "framer-motion";
-import { Course } from "types/Course";
+import { Course } from "../../../../.contentlayer/generated/types";
 
-export default function Hero() {
+interface Props {
+    featuredCourse: Course;
+}
+
+export default function Hero({ featuredCourse }: Props) {
     return (
         <section>
             <SectionContainer>
@@ -20,12 +24,7 @@ export default function Hero() {
                     </p>
                 </div>
 
-                <FeaturedCourseItem course={{
-                    previewImage: "images/CoursePlaceholderImage.png",
-                    title: "Example Title 1",
-                    shortDescription: "Posuere urna nec tincidunt praesent semper feugiat. Quam lacus suspendisse faucibus interdum posuere lorem ipsum",
-                    difficulty: "Beginner"
-                }} />
+                <FeaturedCourseItem course={featuredCourse} />
             </SectionContainer>
         </section>
     )
@@ -44,13 +43,13 @@ interface FeaturedCourseItemProps {
 function FeaturedCourseItem({ course }: FeaturedCourseItemProps) {
     return (
         <motion.div whileHover="hover" className="bg-gray-800">
-            <Link className="flex flex-col lg:flex-row justify-between min-h-full group" href="/courses/test">
+            <Link className="flex flex-col lg:flex-row justify-between min-h-full group" href={`/${course.slug}`}>
                 <div className="overflow-hidden lg:max-w-2xl">
                     <motion.img
-                        src={course.previewImage}
+                        src={course.previewImageSrc}
                         variants={imageVariants}
-                        transition={{ type: "linear", duration: 0.5 }} 
-                        className="object-cover min-h-full"/>
+                        transition={{ type: "linear", duration: 0.5 }}
+                        className="object-cover min-h-full" />
                 </div>
 
                 <div className="flex flex-col flex-1 px-8 py-10 lg:px-14 lg:py-16 lg:max-w-xl lg:min-w-[576px]">
@@ -59,7 +58,7 @@ function FeaturedCourseItem({ course }: FeaturedCourseItemProps) {
                     </H3>
 
                     <p className="mb-8">
-                        {course.shortDescription}
+                        {course.description}
                     </p>
 
                     <div className="mt-auto my-8 w-full h-[1px] bg-gray-50" />

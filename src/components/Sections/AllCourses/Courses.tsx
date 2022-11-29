@@ -1,36 +1,13 @@
 import { H3, Link, SectionContainer } from "@components/atoms"
 import { SectionTitle } from "@components/molecules";
 import { motion } from "framer-motion"
-import { Course } from "types/Course"
+import { Course } from "../../../../.contentlayer/generated/types";
 
-const courses: Course[] = [
-    {
-        previewImage: "images/CoursePlaceholderImage.png",
-        title: "Example Title 1",
-        shortDescription: "Posuere urna nec tincidunt praesent semper feugiat. Quam lacus suspendisse faucibus interdum posuere lorem ipsum",
-        difficulty: "Beginner"
-    },
-    {
-        previewImage: "images/CoursePlaceholderImage.png",
-        title: "Some longer example title lol",
-        shortDescription: "Posuere urna nec tincidunt praesent semper feugiat. Quam lacus suspendisse faucibus interdum posuere lorem ipsum Posuere urna nec tincidunt praesent semper feugiat. Quam lacus suspendisse faucibus interdum posuere lorem ipsum",
-        difficulty: "Intermediate"
-    },
-    {
-        previewImage: "images/CoursePlaceholderImage.png",
-        title: "Example Title 2",
-        shortDescription: "Posuere urna nec tincidunt praesent semper feugiat. Quam lacus suspendisse faucibus interdum posuere lorem ipsum",
-        difficulty: "Advanced"
-    },
-    {
-        previewImage: "images/CoursePlaceholderImage.png",
-        title: "Example Title 3",
-        shortDescription: "Posuere urna nec tincidunt praesent semper feugiat. Quam lacus suspendisse faucibus interdum posuere lorem ipsum",
-        difficulty: "Intermediate"
-    },
-];
+interface Props {
+    courses: Course[];
+}
 
-export default function Courses() {
+export default function Courses({ courses }: Props) {
     return (
         <section className="mt-16 pt-12" id="all-courses">
             <SectionContainer>
@@ -63,10 +40,10 @@ interface CourseItemProps {
 function CourseItem({ course }: CourseItemProps) {
     return (
         <motion.div whileHover="hover" className="bg-gray-800">
-            <Link className="flex flex-col min-h-full group" href="/courses/test">
+            <Link className="flex flex-col min-h-full group" href={`/${course.slug}`}>
                 <div className="overflow-hidden">
                     <motion.img
-                        src={course.previewImage}
+                        src={course.previewImageSrc}
                         variants={imageVariants}
                         transition={{ type: "linear", duration: 0.5 }} />
                 </div>
@@ -77,7 +54,7 @@ function CourseItem({ course }: CourseItemProps) {
                     </H3>
 
                     <p className="mb-8">
-                        {course.shortDescription}
+                        {course.description}
                     </p>
 
                     <div className="mt-auto my-8 w-full h-[1px] bg-gray-50" />

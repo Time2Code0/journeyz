@@ -51,3 +51,9 @@ export const getUrl = async (doc: DocumentGen) => {
         return `${prev}/${pathName}`;
     }, "");
 };
+
+export const getSlug = async (doc: DocumentGen) => {
+    const slugger = new GithubSlugger();
+
+    return slugger.slug(doc.title)
+};

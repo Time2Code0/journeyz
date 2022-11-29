@@ -10,9 +10,9 @@ export default function AllCourses({ courses }: Props) {
     return (
         <DefaultLayout>
             <main>
-                <AllCoursesSection.Hero />
+                <AllCoursesSection.Hero featuredCourse={courses[0]}/>
                 <AllCoursesSection.StartLearingNowParallax />
-                <AllCoursesSection.Courses />
+                <AllCoursesSection.Courses courses={courses}/>
             </main>
         </DefaultLayout>
     )

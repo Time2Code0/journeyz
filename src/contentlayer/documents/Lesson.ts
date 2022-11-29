@@ -4,6 +4,7 @@ import { getUrl, getHeadings, getPathSegments } from "../utils";
 export const Lesson = defineDocumentType(() => ({
     name: 'Lesson',
     filePathPattern: `courses/**/**/*.mdx`,
+    contentType: 'mdx',
     fields: {
         title: {
             type: 'string',
