@@ -1,8 +1,13 @@
 import DefaultLayout from "@components/Layouts/Default";
 import AllCoursesSection from "@components/Sections/AllCourses";
+import { allCourses, Course } from "../../.contentlayer/generated";
 
-export default function AllCourses(){
-    return(
+interface Props {
+    courses: Course[];
+}
+
+export default function AllCourses({ courses }: Props) {
+    return (
         <DefaultLayout>
             <main>
                 <AllCoursesSection.Hero />
@@ -11,4 +16,10 @@ export default function AllCourses(){
             </main>
         </DefaultLayout>
     )
+}
+
+export async function getStaticProps() {
+    const courses = allCourses;
+
+    return { props: { courses} };
 }

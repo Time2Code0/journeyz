@@ -1,5 +1,5 @@
 import { defineDocumentType } from "contentlayer/source-files";
-import { getUrl, getHeadings, getPathSegments } from "contentlayer/utils";
+import { getUrl, getHeadings, getPathSegments } from "../utils"
 
 export const Course = defineDocumentType(() => ({
     name: 'Course',

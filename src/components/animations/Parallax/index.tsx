@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, ReactNode } from 'react'
+import { useState, useRef, ReactNode, useEffect } from 'react'
 import { motion, useTransform, useSpring, useReducedMotion, useScroll } from 'framer-motion'
 
 interface Props {
@@ -11,7 +11,7 @@ export default function Parallax({ children, offset = 50, className }: Props) {
     const prefersReducedMotion = useReducedMotion();
     const [elementTop, setElementTop] = useState(0);
     const [clientHeight, setClientHeight] = useState(0);
-    const ref = useRef(null);
+    const ref = useRef<HTMLDivElement>(null);
 
     const { scrollY } = useScroll();
 
@@ -21,16 +21,16 @@ export default function Parallax({ children, offset = 50, className }: Props) {
     const yRange = useTransform(scrollY, [initial, final], [offset, -offset]);
     const y = useSpring(yRange, { stiffness: 400, damping: 90 });
 
-    useLayoutEffect(() => {
+    useEffect(()=>{
         const element = ref.current;
         const onResize = () => {
-            setElementTop(element.getBoundingClientRect().top + window.scrollY || window.pageYOffset)
+            setElementTop(element!.getBoundingClientRect().top + window.scrollY || window.pageYOffset)
             setClientHeight(window.innerHeight)
         }
         onResize();
         window.addEventListener('resize', onResize);
         return () => window.removeEventListener('resize', onResize);
-    }, [ref]);
+    }, [ref])
 
     // Don't parallax if the user has "reduced motion" enabled
     if (prefersReducedMotion) {
