@@ -11,7 +11,7 @@ export default function CoursePromotionSlug({ course }: Props) {
     useLiveReload();
 
     return (
-        <DefaultLayout>
+        <DefaultLayout showStartLearningBanner>
         </DefaultLayout>
     )
 }

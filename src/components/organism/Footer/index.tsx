@@ -189,7 +189,7 @@ interface FooterItemProps {
 function FooterItem({ href, children }: FooterItemProps) {
     return (
         <li className="mb-4 hover:text-primary-500 hover:translate-x-1 transition-all duration-300">
-            <Link className="text-xl" href={href}>
+            <Link className="text-xl block" href={href}>
                 {children}
             </Link>
         </li>
