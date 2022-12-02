@@ -69,8 +69,7 @@ export default function DashboardLayout({ children, showStartLearningBanner = tr
                                 href="/dashbaord"
                                 title="Dashboard"
                                 icon={<Home size={27} />}
-                                isOpen={isOpen}
-                                isActive />
+                                isOpen={isOpen} />
                             <NavigationItem
                                 href="/courses"
                                 title="Courses"
@@ -109,12 +108,11 @@ interface NavigationItemProps {
     title: string;
     icon: ReactNode;
     isOpen: boolean;
-    isActive?: boolean;
 }
 
-function NavigationItem({ href, title, icon, isOpen, isActive = false }: NavigationItemProps) {
+function NavigationItem({ href, title, icon, isOpen }: NavigationItemProps) {
     return (
-        <li className={classNames("rounded-lg px-2 py-1 hover:bg-primary-400 transition-colors", isActive && ("bg-primary-400"))}>
+        <li className={classNames("rounded-lg px-2 py-1 hover:bg-primary-400 transition-colors", true && ("bg-primary-400"))}>
             <Link
                 href={href}
                 className="flex items-center">
